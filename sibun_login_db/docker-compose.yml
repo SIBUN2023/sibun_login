@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  mySQL:
+    image: mysql:latest
+    restart: always
+    container_name: sibun_login_db
+    environment:
+      - MYSQL_DATABASE=sibunlogin
+      - MYSQL_ROOT_PASSWORD=12345
+    ports:
+      - '5959:3306'
+    volumes:
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql

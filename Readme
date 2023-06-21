@@ -1,0 +1,10 @@
+#dentro de sibun_login_ms
+docker image build -t flask_docker .
+docker run -p 4848:5000 -d flask_docker
+
+#dentro de sibun_login_db
+docker-compose up
+
+#contenedor mysql sin persistencia (solo para hacer pruebas, si se monto con docker compose no hacer este paso)
+docker run -d -p 5959:3306 --name sibun_login_db -e MYSQL_ROOT_PASSWORD=12345 mysql
+docker exec -it login-db mysql -p #terminal de mysql
