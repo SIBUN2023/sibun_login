@@ -3,7 +3,7 @@ import mysql.connector
 def bdConnection():
     try:
         connection=mysql.connector.connect(
-            host='docker.host.internal',
+            host='host.docker.internal',
             port='5959',
             user='root',
             password='12345',

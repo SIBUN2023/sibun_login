@@ -1,6 +1,6 @@
 def registerQuery(connection, email, nombre, apellido, usuario, contrasena, direccion):
     mycursor = connection.cursor()
-    mycursor.execute("SELECT `E_MAIL` FROM `sibunlogin`.`usuario`")
+    mycursor.execute("SELECT `E_MAIL` FROM `sibunlogin`.`USUARIO`")
 
     myresult = mycursor.fetchall()
 
@@ -10,7 +10,7 @@ def registerQuery(connection, email, nombre, apellido, usuario, contrasena, dire
             return (False,"El E-mail ya esta registrado")
     mycursor = connection.cursor()
  
-    mycursor.execute('''INSERT INTO `sibunlogin`.`USUARIO` (`E_MAIL`, `NOMBRE`, `APELLIDO`, `USUARIO`, `CONTRASEÑA`, `DIRECCION`) 
+    mycursor.execute('''INSERT INTO `sibunlogin`.`USUARIO` (`E_MAIL`, `NOMBRE`, `APELLIDO`, `USUARIO`, `CONTRASENA`, `DIRECCION`) 
         VALUES ('%s', '%s', '%s', '%s', '%s', '%s')'''%(email, nombre,apellido,usuario,contrasena,direccion))
     connection.commit()
     return (True,"Usuario registrado correctamente")
@@ -25,7 +25,7 @@ def loginUserQuery(connection, emailUser,contrasenaUser):
         if(emailUser==x[0]):
             
             mycursor = connection.cursor()
-            mycursor.execute("SELECT `CONTRASENA` FROM `loveinbox`.`usuario` WHERE `E_MAIL` = '"+ emailUser 
+            mycursor.execute("SELECT `CONTRASENA` FROM `sibunlogin`.`USUARIO` WHERE `E_MAIL` = '"+ emailUser 
             + "';")
 
             myresult2 = mycursor.fetchall()
